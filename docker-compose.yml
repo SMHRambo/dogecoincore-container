@@ -1,16 +1,15 @@
 services:
   dogecoincore_app:
     image: dogecoincore
-    container_name: dogecoincore_app
-    hostname: dogecoincore_app
+    build: ./Docker
     restart: unless-stopped
-    stop_grace_period: 30s
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /volume1/docker/dogecoincore_stack/app/conf:/config:rw
+      - ./app/conf:/config:rw
     networks:
       PRIVATE:
         ipv4_address: 10.13.16.56
+    env_file:
+      - stack.env
     healthcheck:
       test: "wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1"
       interval: 10s
