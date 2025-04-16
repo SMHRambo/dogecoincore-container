@@ -8,17 +8,11 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /volume1/docker/dogecoincore_stack/app/conf:/config:rw
-#    ports:
-#      - 8080:8080
-#      - 5800:5800
-#      - 5900:5900
     networks:
       PRIVATE:
         ipv4_address: 10.13.16.56
-    env_file:
-      - stack.env
     healthcheck:
-      test: "wget --no-verbose --tries=1 --spider http://localhost:5800/ || exit 1"
+      test: "wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1"
       interval: 10s
       timeout: 10s
       retries: 20

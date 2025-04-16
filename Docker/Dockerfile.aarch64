@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:arm64v8-debianbookworm
 
 # set version label
 ARG BUILD_DATE
@@ -27,7 +27,7 @@ RUN \
   fi && \
   curl -o \
     /tmp/DOGECOINCORE.tar.gz -L \
-    "https://github.com/dogecoin/dogecoin/releases/download/v${DOGECOINCORE_VERSION}/dogecoin-${DOGECOINCORE_VERSION#release-}-x86_64-linux-gnu.tar.gz" && \
+    "https://github.com/dogecoin/dogecoin/releases/download/v${DOGECOINCORE_VERSION}/dogecoin-${DOGECOINCORE_VERSION#release-}-aarch64-linux-gnu.tar.gz" && \
   tar -xf /tmp/DOGECOINCORE.tar.gz -C /tmp && \
   mv \
     /tmp/dogecoin-${DOGECOINCORE_VERSION}/* \
